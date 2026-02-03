@@ -10,17 +10,26 @@
     <div class="d-flex justify-content-center mb-5">
         <ul class="nav nav-pills bg-light p-2 rounded-2 shadow-sm border">
             <li class="nav-item">
-                <a class="nav-link {% if not request.GET.kategorija %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
-                   href="{% url 'katalog' %}">Sve</a>
+                <a class="nav-link rounded-2 px-4 {% if not request.GET.kategorija %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
+                href="{% url 'katalog' %}">
+                Sve
+                </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link {% if request.GET.kategorija == 'miris' %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
-                   href="?kategorija=miris">Automirisi</a>
+                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'miris' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
+                href="?kategorija=miris">
+                Automirisi
+                </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link {% if request.GET.kategorija == 'oprema' %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
-                   href="?kategorija=oprema">Sportska oprema</a>
+                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'oprema' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
+                href="?kategorija=oprema">
+                Sportska oprema
+                </a>
             </li>
+        
         </ul>
     </div>
 
