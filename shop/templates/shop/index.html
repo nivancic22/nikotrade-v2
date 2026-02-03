@@ -1,30 +1,58 @@
 {% extends 'shop/base.html' %}
 
-{% block title %}Početna - Nikotrade{% endblock %}
+{% block title %}Nikotrade | Sport & Style{% endblock %}
 
 {% block content %}
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Dobrodošli na Nikotrade!</h1>
-        <p class="col-md-8 fs-4">Najbolje mjesto za kupovinu računalne opreme i igara.</p>
-        <a href="{% url 'katalog' %}" class="btn btn-primary btn-lg">Pogledaj ponudu</a> 
-      </div>
+<div class="hero-section text-white text-center d-flex align-items-center justify-content-center" style="min-height: 100vh; margin-top: -100px;">
+    <div class="container">
+        <h1 class="display-2 fw-bolder text-uppercase mb-3">Niko Trade</h1>
+        <p class="lead mb-5">Tvoja destinacija za vrhunske automirise u obliku dresova i sportsku opremu.</p>
+        <a href="{% url 'katalog' %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg">
+            Istraži ponudu
+        </a>
     </div>
+</div>
 
-    <div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-white bg-secondary rounded-3">
-          <h2>Popularni proizvodi</h2>
-          <p>Istraži što se najviše kupuje ovaj tjedan.</p>
-          <button class="btn btn-outline-light" type="button">Vidi više</button>
+<div class="container py-5 mt-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold text-dark">Što nudimo?</h2>
+            <p class="lead text-muted">Inovacija i kvaliteta u svakom proizvodu.</p>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>O nama</h2>
-          <p>Saznaj tko stoji iza Nikotrade priče i kako smo nastali.</p>
-          <button class="btn btn-outline-secondary" type="button">Pročitaj priču</button>
-        </div>
-      </div>
     </div>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 feature-card">
+                <i class="fas fa-futbol fa-4x text-primary mb-3"></i>
+                <h4 class="fw-bold">Automirisi - Dresovi</h4>
+                <p class="text-muted">Personalizirani mirisi za auto u obliku omiljenog dresa.</p>
+                <a href="#" class="stretched-link"></a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 feature-card">
+                <i class="fas fa-tshirt fa-4x text-primary mb-3"></i>
+                <h4 class="fw-bold">Sportska Oprema</h4>
+                <p class="text-muted">Od obuće do rekvizita - oprema za tvoje sportske uspjehe.</p>
+                <a href="#" class="stretched-link"></a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 feature-card">
+                <i class="fas fa-tags fa-4x text-primary mb-3"></i>
+                <h4 class="fw-bold">Akcije i Novosti</h4>
+                <p class="text-muted">Uvijek svježe ponude i novi proizvodi u asortimanu.</p>
+                <a href="#" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+</div> <div class="cta-banner text-white text-center py-5 mt-5 mb-5">
+    <div class="container">
+        <h2 class="display-4 fw-bold mb-3">Prati nas na društvenim mrežama!</h2>
+        <p class="lead mb-4">Ne propusti najnovije dresove i sportske akcije.</p>
+        <a href="#" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg">
+            <i class="fab fa-instagram me-2"></i> Posjeti Instagram
+        </a>
+    </div>
+</div>
 {% endblock %}
