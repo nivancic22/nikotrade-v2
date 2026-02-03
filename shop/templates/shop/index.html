@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Početna - Nikotrade{% endblock %}
+
+{% block content %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Dobrodošli na Nikotrade!</h1>
+        <p class="col-md-8 fs-4">Najbolje mjesto za kupovinu računalne opreme i igara.</p>
+        <button class="btn btn-primary btn-lg" type="button">Pogledaj ponudu</button>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-secondary rounded-3">
+          <h2>Popularni proizvodi</h2>
+          <p>Istraži što se najviše kupuje ovaj tjedan.</p>
+          <button class="btn btn-outline-light" type="button">Vidi više</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>O nama</h2>
+          <p>Saznaj tko stoji iza Nikotrade priče i kako smo nastali.</p>
+          <button class="btn btn-outline-secondary" type="button">Pročitaj priču</button>
+        </div>
+      </div>
+    </div>
+{% endblock %}
