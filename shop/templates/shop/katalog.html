@@ -4,33 +4,44 @@
 
 {% block content %}
 
-<div class="container py-5">
-    <h2 class="text-center mb-4 fw-bold">Katalog opreme</h2>
+    <div class="container py-5">
+        <h2 class="text-center mb-4 fw-bold">Katalog opreme</h2>
 
-    <div class="d-flex justify-content-center mb-5">
-        <ul class="nav nav-pills bg-light p-2 rounded-2 shadow-sm border">
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-5">
+        <ul class="nav nav-pills bg-light p-2 rounded-2 shadow-sm border m-0">
             <li class="nav-item">
-                <a class="nav-link rounded-2 px-4 {% if not request.GET.kategorija %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
-                href="{% url 'katalog' %}">
-                Sve
-                </a>
+                <a class="nav-link rounded-2 px-4 {% if not request.GET.kategorija %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" href="{% url 'katalog' %}">Sve</a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'miris' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
-                href="?kategorija=miris">
-                Automirisi
-                </a>
+                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'miris' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" href="?kategorija=miris">Automirisi</a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'oprema' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" 
-                href="?kategorija=oprema">
-                Sportska oprema
-                </a>
+                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'oprema' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" href="?kategorija=oprema">Sportska oprema</a>
             </li>
-        
+            <li class="nav-item">
+                <a class="nav-link rounded-2 px-4 {% if request.GET.kategorija == 'case' %}active bg-dark text-white fw-bold shadow{% else %}text-dark{% endif %}" href="?kategorija=case">Gravirane čaše</a>
+            </li>
         </ul>
+
+        <div class="dropdown">
+            <button class="btn btn-light border shadow-sm dropdown-toggle rounded-2 px-4 py-2 fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sort-down me-2"></i> Sortiraj
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-2">
+                <li>
+                    <a class="dropdown-item {% if request.GET.sort == 'cijena_asc' %}active bg-dark text-white{% endif %}" 
+                    href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_asc">
+                    Cijena: Uzlazno
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if request.GET.sort == 'cijena_desc' %}active bg-dark text-white{% endif %}" 
+                    href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_desc">
+                    Cijena: Silazno
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -49,13 +60,13 @@
                         {{ p.opis|truncatechars:100 }}
                     </p>
                     <p class="h5 fw-bold text-primary mb-3">{{ p.cijena }} €</p>
-                    <a href="#" class="btn btn-dark w-100 py-2 rounded-2">
-                        Dodaj u košaricu
+                    <a href="{% url 'detalji_proizvoda' p.id %}" class="btn btn-dark w-100 py-2 rounded-2">
+                        Pogledaj proizvod
                     </a>
                 </div>
             </div>
         </div>
         {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}

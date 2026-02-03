@@ -4,6 +4,7 @@ class Proizvod(models.Model):
     KATEGORIJE = (
         ('miris', 'Automiris - Dres'),
         ('oprema', 'Sportska Oprema'),
+        ('case', 'Gravirane čaše'), 
     )
 
     naziv = models.CharField(max_length=200)

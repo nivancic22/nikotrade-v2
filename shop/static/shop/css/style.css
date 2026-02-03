@@ -18,7 +18,7 @@ body {
 .navbar-brand {
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .nav-link.active {
@@ -30,14 +30,19 @@ body {
 .nav-link:hover {
     color: #0d6efd !important;
 }
+.nav-link {
+    transition: all 0.3s ease;
+}
+.nav-link:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px); /* Lagani efekt na hover */
+}
 
-/* Main content spacing */
 main {
     padding-top: 100px;
     padding-bottom: 40px;
 }
 
-/* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x1080/212529/ffffff?text=Niko+Trade+Sport') no-repeat center center;
     background-size: cover;
@@ -45,7 +50,6 @@ main {
     overflow: hidden;
 }
 
-/* Kartice i ostalo */
 .feature-card {
     transition: all 0.3s ease;
 }

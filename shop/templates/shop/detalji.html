@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 1200px;"> <div class="row g-5 align-items-stretch"> <div class="col-md-6">
+            <div class="card border-0 shadow-lg h-100 overflow-hidden rounded-3">
+                {% if proizvod.slika %}
+                    <img src="{{ proizvod.slika.url }}" 
+                         class="w-100 h-100" 
+                         alt="{{ proizvod.naziv }}" 
+                         style="min-height: 600px; object-fit: cover; object-position: center;">
+                {% else %}
+                    <img src="https://via.placeholder.com/800x1000" class="w-100 h-100" style="object-fit: cover;" alt="Nema slike">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex flex-column">
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb small">
+                    <li class="breadcrumb-item"><a href="{% url 'katalog' %}" class="text-decoration-none text-muted">Katalog</a></li>
+                    <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">{{ proizvod.naziv }}</li>
+                </ol>
+            </nav>
+            
+            <h1 class="fw-bold mb-2 display-5">{{ proizvod.naziv }}</h1>
+            
+            <div class="mb-4">
+                <span class="badge bg-dark px-3 py-2 rounded-2 d-inline-block shadow-sm" style="font-weight: 500; letter-spacing: 0.5px;">
+                    {{ proizvod.get_kategorija_display }}
+                </span>
+            </div>
+            
+            <h2 class="text-primary fw-bold mb-4 display-6">{{ proizvod.cijena }} €</h2>
+            
+            <hr class="my-4">
+            
+            <div class="flex-grow-1"> <h5 class="fw-bold">Opis proizvoda:</h5>
+                <p class="text-muted lh-lg mb-5" style="font-size: 1.1rem;">
+                    {{ proizvod.opis }}
+                </p>
+            </div>
+
+            <div class="d-grid mt-4">
+                <button class="btn btn-dark py-3 fw-bold rounded-2 shadow-sm fs-5">
+                    <i class="bi bi-cart-plus me-2"></i> Dodaj u košaricu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
