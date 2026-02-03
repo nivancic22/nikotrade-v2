@@ -3,26 +3,50 @@
 {% block title %}Katalog Proizvoda - Nikotrade{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">Katalog opreme</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for i in "123456" %}
-    <div class="col">
-        <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Proizvod">
-            <div class="card-body">
-                <h5 class="card-title">Ime Proizvoda {{ i }}</h5>
-                <p class="card-text">Kratki opis proizvoda koji se odnosi na žanr i platformu.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-secondary">Žanr</span>
-                    <span class="fw-bold text-primary">59.99 €</span>
+<div class="container py-5">
+    <h2 class="text-center mb-4 fw-bold">Katalog opreme</h2>
+
+    <div class="d-flex justify-content-center mb-5">
+        <ul class="nav nav-pills bg-light p-2 rounded-2 shadow-sm border">
+            <li class="nav-item">
+                <a class="nav-link {% if not request.GET.kategorija %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
+                   href="{% url 'katalog' %}">Sve</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.GET.kategorija == 'miris' %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
+                   href="?kategorija=miris">Automirisi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.GET.kategorija == 'oprema' %}active bg-dark text-white shadow{% else %}text-dark{% endif %} rounded-2 px-4" 
+                   href="?kategorija=oprema">Sportska oprema</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for p in proizvodi %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 d-flex flex-column rounded-2">
+                {% if p.slika %}
+                    <img src="{{ p.slika.url }}" class="card-img-top rounded-top-2" alt="{{ p.naziv }}" style="height: 250px; object-fit: cover;">
+                {% else %}
+                    <img src="https://via.placeholder.com/400x600" class="card-img-top rounded-top-2" alt="Nema slike">
+                {% endif %}
+                
+                <div class="card-body text-center d-flex flex-column">
+                    <h5 class="card-title fw-bold">{{ p.naziv }}</h5>
+                    <p class="card-text text-muted flex-grow-1">
+                        {{ p.opis|truncatechars:100 }}
+                    </p>
+                    <p class="h5 fw-bold text-primary mb-3">{{ p.cijena }} €</p>
+                    <a href="#" class="btn btn-dark w-100 py-2 rounded-2">
+                        Dodaj u košaricu
+                    </a>
                 </div>
             </div>
-            <div class="card-footer bg-transparent border-top-0">
-                <a href="#" class="btn btn-outline-dark btn-sm w-100">Pogledaj detalje</a>
-            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
