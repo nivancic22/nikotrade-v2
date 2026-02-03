@@ -6,3 +6,6 @@ def index(request):
 def katalog(request):
     #dohvatanje proizvoda iz baze
     return render(request, 'shop/katalog.html')
+
+def kontakt(request):
+    return render(request, 'shop/kontakt.html')

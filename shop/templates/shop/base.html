@@ -34,6 +34,11 @@
         </li>
         
         <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'kontakt' %}active fw-bold text-white{% endif %}" 
+            href="{% url 'kontakt' %}">Kontakt</a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="#">O nama</a>
         </li>
 
