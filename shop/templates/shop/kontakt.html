@@ -1,28 +1,77 @@
 {% extends 'shop/base.html' %}
 
-{% block title %}Kontakt - Nikotrade{% endblock %}
+{% block title %}Kontakt | Nikotrade{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-dark text-white text-center py-3">
-                    <h3>KONTAKT PODACI</h3>
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="text-white text-center py-4" 
+                     style="background: linear-gradient(90deg, #0052D4 0%, #4364F7 50%, #6FB1FC 100%);">
+                    <h2 class="fw-bold text-uppercase mb-0" style="letter-spacing: 2px;">Kontakt Podaci</h2>
                 </div>
-                <div class="card-body p-4 text-center">
-                    <h4 class="mb-4">Niko Trade d.o.o.</h4>
-                    <p class="fs-5"><strong>Adresa:</strong> Vatroslava Lisinskog 17, 42233 Sveti Đurđ</p>
-                    <p class="fs-5"><strong>Email:</strong> <a href="mailto:info@nikotrade.hr" class="text-decoration-none">info@nikotrade.hr</a></p>
-                    <p class="fs-5"><strong>Mobitel:</strong> <a href="tel:098241285" class="text-decoration-none">098 241 285</a></p>
+
+                <div class="card-body p-5 text-center">
+                    <h3 class="fw-bold mb-4 text-dark">Niko Trade d.o.o.</h3>
                     
-                    <hr class="my-4">
-                    
-                    <h5>Radno vrijeme</h5>
-                    <p>Pon - Pet: 08:00 - 16:00<br>Subota: 08:00 - 12:00</p>
+                    <div class="mb-4">
+                        <p class="mb-1 text-muted text-uppercase small fw-bold">Adresa</p>
+                        <p class="fs-5 fw-medium">Vatroslava Lisinskog 17, 42233 Sveti Đurđ</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="mb-1 text-muted text-uppercase small fw-bold">Email</p>
+                        <a href="mailto:info@nikotrade.hr" class="fs-5 fw-bold text-decoration-none" style="color: #4364F7;">
+                            info@nikotrade.hr
+                        </a>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="mb-1 text-muted text-uppercase small fw-bold">Mobitel</p>
+                        <a href="tel:098241285" class="fs-5 fw-bold text-decoration-none" style="color: #4364F7;">
+                            098 241 285
+                        </a>
+                    </div>
+
+                    <hr class="my-4 opacity-10">
+
+                    <div class="mb-0">
+                        <h5 class="fw-bold mb-3">Radno vrijeme</h5>
+                        <p class="mb-1">Pon - Pet: <span class="fw-bold">08:00 - 16:00</span></p>
+                        <p class="mb-0">Subota: <span class="fw-bold">08:00 - 12:00</span></p>
+                    </div>
                 </div>
+                
+                <div style="height: 6px; background: linear-gradient(90deg, #0052D4 0%, #6FB1FC 100%);"></div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* Inicijalno stanje kartice */
+    .card {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        border: none;
+    }
+
+    /* Efekt na hover */
+    .card:hover {
+        /* Umjesto pomicanja, koristimo scale za vrlo blago povećanje */
+        transform: scale(1.02); 
+        
+        /* Povećavamo sjenu da izgleda kao da se kartica podigla prema korisniku */
+        box-shadow: 0 15px 35px rgba(0, 82, 212, 0.2) !important;
+    }
+
+    /* Osiguravamo da su linkovi klikabilni i da imaju lijepu boju */
+    .card-body a {
+        transition: opacity 0.2s ease;
+    }
+
+    .card-body a:hover {
+        opacity: 0.8;
+    }
+</style>
 {% endblock %}

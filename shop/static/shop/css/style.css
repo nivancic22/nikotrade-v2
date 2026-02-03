@@ -50,15 +50,14 @@ main {
     overflow: hidden;
 }
 
+.cta-banner {
+    background: linear-gradient(135deg, #0d6efd 0%, #1a1a1a 100%);
+}
 .feature-card {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, shadow 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
-}
-
-.cta-banner {
-    background: linear-gradient(135deg, #0d6efd 0%, #1a1a1a 100%);
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
