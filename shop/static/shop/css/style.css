@@ -1,0 +1,60 @@
+/* shop/static/shop/css/style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Navigacija */
+.navbar {
+    background-color: #1a1a1a !important;
+    border-bottom: 3px solid #0d6efd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link.active {
+    color: #0d6efd !important;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 5px;
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* Main content spacing */
+main {
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x1080/212529/ffffff?text=Niko+Trade+Sport') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Kartice i ostalo */
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+.cta-banner {
+    background: linear-gradient(135deg, #0d6efd 0%, #1a1a1a 100%);
+}
