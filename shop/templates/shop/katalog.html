@@ -1,28 +1,105 @@
 {% extends 'shop/base.html' %}
 
-{% block title %}Katalog Proizvoda - Nikotrade{% endblock %}
-
 {% block content %}
-<h2 class="mb-4">Katalog opreme</h2>
+<div class="container py-4">
+    <h2 class="text-center mb-4 fw-bold display-6">Katalog opreme</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for i in "123456" %}
-    <div class="col">
-        <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Proizvod">
-            <div class="card-body">
-                <h5 class="card-title">Ime Proizvoda {{ i }}</h5>
-                <p class="card-text">Kratki opis proizvoda koji se odnosi na žanr i platformu.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-secondary">Žanr</span>
-                    <span class="fw-bold text-primary">59.99 €</span>
-                </div>
-            </div>
-            <div class="card-footer bg-transparent border-top-0">
-                <a href="#" class="btn btn-outline-dark btn-sm w-100">Pogledaj detalje</a>
-            </div>
+    <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-5">
+        <ul class="nav nav-pills bg-white p-2 shadow-sm border m-0">
+            <li class="nav-item">
+                <a class="nav-link px-4 py-2 fs-5 {% if not request.GET.kategorija %}custom-gradient-active{% else %}text-dark{% endif %}" href="{% url 'katalog' %}">Sve</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4 py-2 fs-5 {% if request.GET.kategorija == 'miris' %}custom-gradient-active{% else %}text-dark{% endif %}" href="?kategorija=miris">Automirisi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4 py-2 fs-5 {% if request.GET.kategorija == 'oprema' %}custom-gradient-active{% else %}text-dark{% endif %}" href="?kategorija=oprema">Sportska oprema</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4 py-2 fs-5 {% if request.GET.kategorija == 'case' %}custom-gradient-active{% else %}text-dark{% endif %}" href="?kategorija=case">Gravirane čaše</a>
+            </li>
+        </ul>
+
+        <div class="dropdown">
+        <button class="btn btn-white border shadow-sm dropdown-toggle rounded-2 px-4 py-2 fw-bold fs-5 text-dark custom-sort-btn" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-sort-down me-1"></i> Sortiraj
+        </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-2">
+               <li><a class="dropdown-item py-2" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_asc">Cijena: Uzlazno</a></li>
+              <li><a class="dropdown-item py-2" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_desc">Cijena: Silazno</a></li>
+            </ul>
         </div>
     </div>
-    {% endfor %}
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for p in proizvodi %}
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm rounded-4 product-card">
+                <div class="position-relative overflow-hidden rounded-top-4">
+                    {% if p.slika %}
+                        <img src="{{ p.slika.url }}" class="card-img-top p-3" alt="{{ p.naziv }}" style="height: 300px; object-fit: contain;">
+                    {% endif %}
+                </div>
+                
+                <div class="card-body text-center d-flex flex-column">
+                    <h5 class="fw-bold mb-2">{{ p.naziv }}</h5>
+                    <p class="text-muted small flex-grow-1">{{ p.opis|truncatechars:80 }}</p>
+                    <h4 class="fw-bold mb-3" style="color: #4364F7;">{{ p.cijena }} €</h4>
+                    <a href="{% url 'detalji' p.id %}" class="btn custom-gradient-btn rounded-pill text-white fw-bold py-2">
+                        Pogledaj proizvod
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
+<style>
+    /* Gradient za aktivne gumbe i linkove */
+    .custom-gradient-active {
+        background: linear-gradient(90deg, #0052D4 0%, #4364F7 100%) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(67, 100, 247, 0.3);
+    }
+
+    /* Gradient za glavne gumbe na karticama */
+    .custom-gradient-btn {
+        background: linear-gradient(90deg, #0052D4 0%, #6FB1FC 100%);
+        border: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .custom-gradient-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 82, 212, 0.4);
+        color: white;
+    }
+
+    /* Efekt na karticama */
+    .product-card {
+        transition: all 0.3s ease;
+        border-top: 3px solid transparent !important;
+    }
+
+    .product-card:hover {
+        border-top: 3px solid #4364F7 !important;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+    .nav-pills .nav-link:hover:not(.custom-gradient-active) {
+        color: #4364F7 !important; /* Tekst postaje plav, a NE bijel */
+    }
+    .custom-sort-btn {
+        background-color: white !important;
+        transition: all 0.3s ease !important;
+        border: 1px solid #dee2e6 !important; /* Isti obrub kao nav-pills */
+    }
+
+    /* Hover efekt za sortiraj gumb */
+    .custom-sort-btn:hover {
+        color: #4364F7 !important; /* Plavi tekst na hover */
+        background-color: #f8f9fa !important;
+    }
+    </style>
 {% endblock %}
