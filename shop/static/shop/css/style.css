@@ -64,9 +64,8 @@ main {
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
-    /* Putanja pretpostavlja da je slika u static/images/, a css u static/css/ */
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                url('../images/hero-bg.png'); 
+    /* Uklonjen linear-gradient, ostaje samo slika */
+    background: url('../images/hero-bg.png'); 
     background-size: cover;
     background-position: center;
     margin-top: -95px;
@@ -95,17 +94,22 @@ main {
 }
 
 .btn-hero {
-    background-color: #0077b6;
-    color: white;
-    font-weight: bold;
-    padding: 1rem 3rem;
-    border-radius: 5px; 
-    border: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #ffffff; /* Bijela pozadina kao na Instagram gumbu */
+    color: #000000;            /* Potpuno crni tekst za maksimalan kontrast */
+    font-weight: 700;          /* Podebljan tekst */
+    padding: 0.8rem 2.5rem;    /* Unutarnji razmak */
+    border-radius: 8px;        /* Blago zaobljeni rubovi (rounded-2 stil) */
+    border: none;              /* Bez obruba */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .btn-hero:hover {
-    background-color: #005f92;
-    color: white;
-    transform: scale(1.05);
+    background-color: #f8f9fa; /* Lagana siva na hover da se osjeti klik */
+    color: #000000;
+    transform: translateY(-2px); /* Suptilno podizanje */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Blaga sjena na hover */
 }
