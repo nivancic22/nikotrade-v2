@@ -50,22 +50,14 @@
 </div>
 
 <style>
-    /* Inicijalno stanje kartice */
     .card {
         transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
         border: none;
     }
-
-    /* Efekt na hover */
     .card:hover {
-        /* Umjesto pomicanja, koristimo scale za vrlo blago povećanje */
         transform: scale(1.02); 
-        
-        /* Povećavamo sjenu da izgleda kao da se kartica podigla prema korisniku */
         box-shadow: 0 15px 35px rgba(0, 82, 212, 0.2) !important;
     }
-
-    /* Osiguravamo da su linkovi klikabilni i da imaju lijepu boju */
     .card-body a {
         transition: opacity 0.2s ease;
     }

@@ -21,12 +21,12 @@
         </ul>
 
         <div class="dropdown">
-            <button class="btn btn-white border shadow-sm dropdown-toggle px-4 py-2 fw-bold fs-5 text-dark" type="button" data-bs-toggle="dropdown">
-                <i class="bi bi-sort-down me-1"></i> Sortiraj
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3">
-                <li><a class="dropdown-item" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_asc">Cijena: Uzlazno</a></li>
-                <li><a class="dropdown-item" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_desc">Cijena: Silazno</a></li>
+        <button class="btn btn-white border shadow-sm dropdown-toggle rounded-2 px-4 py-2 fw-bold fs-5 text-dark custom-sort-btn" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-sort-down me-1"></i> Sortiraj
+        </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-2">
+               <li><a class="dropdown-item py-2" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_asc">Cijena: Uzlazno</a></li>
+              <li><a class="dropdown-item py-2" href="?{% if request.GET.kategorija %}kategorija={{ request.GET.kategorija }}&{% endif %}sort=cijena_desc">Cijena: Silazno</a></li>
             </ul>
         </div>
     </div>
@@ -87,5 +87,19 @@
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
     }
-</style>
+    .nav-pills .nav-link:hover:not(.custom-gradient-active) {
+        color: #4364F7 !important; /* Tekst postaje plav, a NE bijel */
+    }
+    .custom-sort-btn {
+        background-color: white !important;
+        transition: all 0.3s ease !important;
+        border: 1px solid #dee2e6 !important; /* Isti obrub kao nav-pills */
+    }
+
+    /* Hover efekt za sortiraj gumb */
+    .custom-sort-btn:hover {
+        color: #4364F7 !important; /* Plavi tekst na hover */
+        background-color: #f8f9fa !important;
+    }
+    </style>
 {% endblock %}
