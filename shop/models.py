@@ -17,3 +17,10 @@ class Proizvod(models.Model):
 
     def __str__(self):
         return self.naziv
+    
+class DodatnaSlika(models.Model):
+    proizvod = models.ForeignKey('Proizvod', related_name='dodatne_slike', on_delete=models.CASCADE)
+    slika = models.ImageField(upload_to='proizvodi/galerija/')
+
+    def __str__(self):
+        return f"Slika za {self.proizvod.naziv}"
