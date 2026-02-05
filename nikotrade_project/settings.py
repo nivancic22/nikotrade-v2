@@ -1,9 +1,12 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = 'django-insecure-o_-a2qgxk9^onm6h&)%_4om__&kv%y_5e$o0@bw0!^y5%jrhsw'
 
 DEBUG = True
 
@@ -104,14 +107,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Ovo govori Djangu da koristi SMTP protokol
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# Googleov server
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Ovdje stavi svoj puni Gmail
-EMAIL_HOST_USER = 'nikoivancic2801@gmail.com'
-
-# OVDJE LIJEPIŠ ONU ŽUTU LOZINKU OD 16 SLOVA (ne svoju pravu lozinku za login!)
-# Možeš je ostaviti s razmacima ili bez, svejedno je.
-EMAIL_HOST_PASSWORD = 'rewg xdog uclv czou'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
