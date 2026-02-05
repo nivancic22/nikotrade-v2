@@ -24,3 +24,16 @@ class DodatnaSlika(models.Model):
 
     def __str__(self):
         return f"Slika za {self.proizvod.naziv}"
+    
+class Upit(models.Model):
+    proizvod = models.ForeignKey('Proizvod', on_delete=models.CASCADE, related_name='upiti')
+    email_kupca = models.EmailField()
+    poruka = models.TextField()
+    datum_slanja = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Upit"
+        verbose_name_plural = "Upiti kupaca"
+
+    def __str__(self):
+        return f"Upit za {self.proizvod.naziv} od {self.email_kupca}"

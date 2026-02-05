@@ -1,6 +1,5 @@
 {% extends 'shop/base.html' %}
 {% load static %}
-
 {% block content %}
 <div class="container mt-5">
     <div class="row">
@@ -44,7 +43,40 @@
             <p class="text-muted">{{ proizvod.opis }}</p>
             
             <div class="mt-5">
-                <button class="btn btn-dark btn-lg w-100 py-3 fw-bold">Pošalji upit</button>
+                <button type="button" class="btn btn-dark btn-lg w-100 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#upitModal">
+                    Pošalji upit
+                </button>
+            </div>
+
+            <div class="modal fade" id="upitModal" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Upit za: {{ proizvod.naziv }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form method="POST" action="{% url 'posalji_upit' proizvod.id %}">
+                    {% csrf_token %}
+                    <div class="modal-body text-start">
+                      <div class="mb-3">
+                        <label class="form-label">Vaš Email</label>
+                        <input type="email" name="email_kupca" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Vaša poruka (količina, detalji...)</label>
+                        <textarea name="poruka" class="form-control" rows="4" required></textarea>
+                      </div>
+                      <div class="form-check small">
+                        <input class="form-check-box" type="checkbox" required>
+                        <label class="form-check-label text-muted">Slažem se s obradom podataka u svrhu slanja ponude (GDPR).</label>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-dark w-100">Pošalji</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
         </div>
     </div>
