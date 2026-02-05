@@ -94,13 +94,13 @@ main {
 }
 
 .btn-hero {
-    background-color: #ffffff; /* Bijela pozadina kao na Instagram gumbu */
+    background-color: #ffffff; 
     color: #000000;
     font-size: 1.7rem;
-    font-weight: 700;          /* Podebljan tekst */
-    padding: 0.8rem 2.5rem;    /* Unutarnji razmak */
-    border-radius: 8px;        /* Blago zaobljeni rubovi (rounded-2 stil) */
-    border: none;              /* Bez obruba */
+    font-weight: 700;        
+    padding: 0.8rem 2.5rem; 
+    border-radius: 8px;        
+    border: none;             
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -109,8 +109,8 @@ main {
 }
 
 .btn-hero:hover {
-    background-color: #d3d4d5; /* Lagana siva na hover da se osjeti klik */
+    background-color: #d3d4d5;
     color: #000000;
     /*transform: translateY(-2px);  */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Blaga sjena na hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
