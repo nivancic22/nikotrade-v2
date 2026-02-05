@@ -128,7 +128,7 @@
     font-size: 14px;         /* Malo manji font od imena */
     color: #0056b3;          /* Boja linka (npr. plava) */
     text-decoration: none;   /* Bez podcrtavanja (osim na hover) */
-    font-weight: 500;
+    font-weight: 700 !important; 
     transition: color 0.2s;
 }
 
@@ -136,6 +136,3 @@
     color: #003d82;          /* Tamnija plava kad prijeđeš mišem */
     text-decoration: underline;
 }
-
-/* Ako želiš da izgleda samo kao tekst (sivo), a ne kao link, koristi ovo umjesto gornjeg colora: */
-/* color: #777; */
