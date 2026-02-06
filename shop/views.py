@@ -66,3 +66,28 @@ def posalji_upit(request, proizvod_id):
             messages.error(request, "Došlo je do greške pri slanju maila.")
 
         return redirect('detalji', id=proizvod.id)
+    
+def posalji_kontakt_upit(request):
+    if request.method == 'POST':
+        email_posiljatelja = request.POST.get('email')
+        naslov_poruke = request.POST.get('naslov')
+        sadrzaj = request.POST.get('poruka')
+
+        # Slanje emaila tebi
+        full_message = f"Dobili ste novi kontakt upit.\n\nOd: {email_posiljatelja}\nNaslov: {naslov_poruke}\n\nPoruka:\n{sadrzaj}"
+        
+        try:
+            send_mail(
+                f"Kontakt upit: {naslov_poruke}", # Naslov maila
+                full_message, # Sadržaj
+                request.user.email if request.user.is_authenticated else 'web@nikotrade.com', # Od koga (nije presudno za Gmail)
+                ['nikoivancic2801@gmail.com'], # Tvoj mail (iz .env ili hardcoded za test)
+                fail_silently=False,
+            )
+            messages.success(request, "Vaša poruka je uspješno poslana! Javit ćemo vam se uskoro.")
+        except Exception as e:
+            messages.error(request, "Došlo je do greške pri slanju poruke.")
+            print(e) # Ispis greške u terminal za svaki slučaj
+
+    # Vraća korisnika natrag na stranicu 'kontakt'
+    return redirect('kontakt')

@@ -6,10 +6,11 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden position-relative">
+                
                 <div class="text-white text-center py-4" 
                      style="background: linear-gradient(90deg, #0052D4 0%, #4364F7 50%, #6FB1FC 100%);">
-                    <h2 class="fw-bold text-uppercase mb-0" style="letter-spacing: 2px;">Kontakt Podaci</h2>
+                    <h2 class="fw-bold text-uppercase mb-0" style="letter-spacing: 2px;">Kontakt</h2>
                 </div>
 
                 <div class="card-body p-5 text-center">
@@ -34,7 +35,14 @@
                         </a>
                     </div>
 
-                    <hr class="my-4 opacity-10">
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-10 col-md-8"> <button type="button" class="btn custom-gradient-btn py-2 w-100 rounded-pill fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#kontaktModal">
+                                Pošalji upit
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="my-4 opacity-25">
 
                     <div class="mb-0">
                         <h5 class="fw-bold mb-3">Radno vrijeme</h5>
@@ -42,27 +50,81 @@
                         <p class="mb-0">Subota: <span class="fw-bold">08:00 - 12:00</span></p>
                     </div>
                 </div>
-                
-                <div style="height: 6px; background: linear-gradient(90deg, #0052D4 0%, #6FB1FC 100%);"></div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="kontaktModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold">Kontaktirajte nas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <form method="POST" action="{% url 'posalji_kontakt_upit' %}">
+        {% csrf_token %}
+        <div class="modal-body text-start">
+            
+          <div class="mb-3">
+            <label class="form-label fw-bold">Vaš Email</label>
+            <input type="email" name="email" class="form-control" placeholder="ime@primjer.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Naslov poruke</label>
+            <input type="text" name="naslov" class="form-control" placeholder="Npr. Pitanje o dostavi..." required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Vaša poruka</label>
+            <textarea name="poruka" class="form-control" rows="5" required placeholder="Napišite nam što vas zanima..."></textarea>
+          </div>
+
+          <div class="form-check small text-muted">
+            <input class="form-check-input" type="checkbox" required id="gdprKontakt">
+            <label class="form-check-label" for="gdprKontakt">
+                Slažem se da me kontaktirate povratno na navedeni email.
+            </label>
+          </div>
+
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+          <button type="submit" class="btn btn-primary px-4">Pošalji poruku</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <style>
-    .card {
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    /* Ovdje je tvoj originalni stil gumba iz category.css */
+    .custom-gradient-btn {
+        background: linear-gradient(90deg, #0052D4 0%, #6FB1FC 100%);
         border: none;
-    }
-    .card:hover {
-        transform: scale(1.02); 
-        box-shadow: 0 15px 35px rgba(0, 82, 212, 0.2) !important;
-    }
-    .card-body a {
-        transition: opacity 0.2s ease;
+        color: white !important; /* Forsiramo bijela slova */
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.3s;
+        background-size: 200% auto;
     }
 
+    /* Efekt na hover - pomicanje gradijenta i blago podizanje */
+    .custom-gradient-btn:hover {
+        background-position: right center; /* Ovo stvara efekt promjene boje */
+        color: white !important;
+    }
+
+    /* Efekt za karticu */
+    .card {
+        transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+        box-shadow: 0 20px 40px rgba(0, 82, 212, 0.15) !important;
+    }
+    
     .card-body a:hover {
+        text-decoration: underline !important;
         opacity: 0.8;
     }
 </style>
