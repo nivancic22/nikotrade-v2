@@ -37,3 +37,16 @@ class Upit(models.Model):
 
     def __str__(self):
         return f"Upit za {self.proizvod.naziv} od {self.email_kupca}"
+    
+class KontaktUpit(models.Model):
+    email = models.EmailField()
+    naslov = models.CharField(max_length=200)
+    poruka = models.TextField()
+    datum = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.email} - {self.naslov}"
+
+    class Meta:
+        verbose_name = "Kontakt Upit"
+        verbose_name_plural = "Generalni Kontakt Upiti"

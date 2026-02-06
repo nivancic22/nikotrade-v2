@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Proizvod, Upit  
+from .models import Proizvod, Upit, KontaktUpit
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404 
 from django.core.mail import send_mail
 from django.contrib import messages
@@ -72,22 +73,27 @@ def posalji_kontakt_upit(request):
         email_posiljatelja = request.POST.get('email')
         naslov_poruke = request.POST.get('naslov')
         sadrzaj = request.POST.get('poruka')
-
-        # Slanje emaila tebi
-        full_message = f"Dobili ste novi kontakt upit.\n\nOd: {email_posiljatelja}\nNaslov: {naslov_poruke}\n\nPoruka:\n{sadrzaj}"
-        
         try:
+            novi_kontakt = KontaktUpit(
+                email=email_posiljatelja,
+                naslov=naslov_poruke,
+                poruka=sadrzaj
+            )
+            novi_kontakt.save() # Ovdje se fizički upisuje u bazu
+            
+            full_message = f"Dobili ste novi kontakt upit.\n\nOd: {email_posiljatelja}\nNaslov: {naslov_poruke}\n\nPoruka:\n{sadrzaj}"
+            
             send_mail(
-                f"Kontakt upit: {naslov_poruke}", # Naslov maila
-                full_message, # Sadržaj
-                request.user.email if request.user.is_authenticated else 'web@nikotrade.com', # Od koga (nije presudno za Gmail)
-                ['nikoivancic2801@gmail.com'], # Tvoj mail (iz .env ili hardcoded za test)
+                f"Kontakt upit: {naslov_poruke}",
+                full_message,
+                request.user.email if request.user.is_authenticated else 'web@nikotrade.com',
+                ['nikoivancic2801@gmail.com'], # Tvoj mail
                 fail_silently=False,
             )
             messages.success(request, "Vaša poruka je uspješno poslana! Javit ćemo vam se uskoro.")
+            
         except Exception as e:
-            messages.error(request, "Došlo je do greške pri slanju poruke.")
-            print(e) # Ispis greške u terminal za svaki slučaj
+            messages.error(request, "Došlo je do greške. Molimo pokušajte ponovno.")
+            print(f"Greška: {e}")
 
-    # Vraća korisnika natrag na stranicu 'kontakt'
     return redirect('kontakt')

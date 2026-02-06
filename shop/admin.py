@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Proizvod, DodatnaSlika # Provjeri jesu li oba ovdje
+from .models import Proizvod, DodatnaSlika, KontaktUpit
 from .models import Upit
 
 
@@ -18,3 +18,10 @@ class ProizvodAdmin(admin.ModelAdmin):
 class UpitAdmin(admin.ModelAdmin):
     list_display = ['email_kupca', 'proizvod', 'datum_slanja']
     readonly_fields = ['datum_slanja']
+
+@admin.register(KontaktUpit)
+class KontaktUpitAdmin(admin.ModelAdmin):
+    list_display = ('email', 'naslov', 'datum')
+    search_fields = ('email', 'naslov', 'poruka')
+    list_filter = ('datum',)
+    readonly_fields = ('datum',)
