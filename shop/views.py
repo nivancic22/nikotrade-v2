@@ -94,3 +94,6 @@ def posalji_kontakt_upit(request):
             print(f"Greška: {e}")
 
     return redirect('kontakt')
+
+def politika_privatnosti(request):
+    return render(request, 'shop/politika_privatnosti.html')
