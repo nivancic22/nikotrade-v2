@@ -1,4 +1,3 @@
-/* shop/static/shop/css/style.css */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 
@@ -8,7 +7,6 @@ body {
     color: #333;
 }
 
-/* Navigacija */
 .navbar {
     background-color: #1a1a1a !important;
     border-bottom: 3px solid #0d6efd;
@@ -35,7 +33,7 @@ body {
 }
 .nav-link:hover {
     color: #ffffff !important;
-    transform: translateY(-2px); /* Lagani efekt na hover */
+    transform: translateY(-2px); 
 }
 
 main {
@@ -61,10 +59,9 @@ main {
     transform: translateY(-10px);
     box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
-/* Hero Section */
+
 .hero-section {
     min-height: 100vh;
-    /* Uklonjen linear-gradient, ostaje samo slika */
     background: url('../images/hero-bg.png'); 
     background-size: cover;
     background-position: center;
@@ -111,6 +108,5 @@ main {
 .btn-hero:hover {
     background-color: #d3d4d5;
     color: #000000;
-    /*transform: translateY(-2px);  */
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }

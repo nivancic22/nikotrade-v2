@@ -11,7 +11,6 @@ class Proizvod(models.Model):
     kategorija = models.CharField(max_length=20, choices=KATEGORIJE)
     opis = models.TextField()
     cijena = models.DecimalField(max_digits=10, decimal_places=2)
-    # Slika se sprema u mapu 'proizvodi' unutar tvojih medijskih datoteka
     slika = models.ImageField(upload_to='proizvodi/', blank=True, null=True)
     datum_dodavanja = models.DateTimeField(auto_now_add=True)
 

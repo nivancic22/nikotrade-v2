@@ -9,7 +9,6 @@ class DodatnaSlikaInline(admin.TabularInline):
 
 @admin.register(Proizvod)
 class ProizvodAdmin(admin.ModelAdmin):
-    # Koristimo 'naziv' jer smo vidjeli na slici da se tako zove polje
     list_display = ['naziv', 'cijena', 'kategorija'] 
     inlines = [DodatnaSlikaInline]
 
