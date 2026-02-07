@@ -82,10 +82,10 @@
             <textarea name="poruka" class="form-control" rows="5" required placeholder="Napišite nam što vas zanima..."></textarea>
           </div>
 
-          <div class="form-check small text-muted">
-            <input class="form-check-input" type="checkbox" required id="gdprKontakt">
-            <label class="form-check-label" for="gdprKontakt">
-                Slažem se da me kontaktirate povratno na navedeni email.
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="gdprCheck" required>
+            <label class="form-check-label" for="gdprCheck" style="font-size: 0.9em;">
+                Slažem se s <a href="{% url 'politika_privatnosti' %}" target="_blank">Politikom privatnosti</a> i prihvaćam da se moji podaci koriste za odgovor na upit.
             </label>
           </div>
 
@@ -100,22 +100,19 @@
 </div>
 
 <style>
-    /* Ovdje je tvoj originalni stil gumba iz category.css */
     .custom-gradient-btn {
         background: linear-gradient(90deg, #0052D4 0%, #6FB1FC 100%);
         border: none;
-        color: white !important; /* Forsiramo bijela slova */
+        color: white !important; 
         transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.3s;
         background-size: 200% auto;
     }
 
-    /* Efekt na hover - pomicanje gradijenta i blago podizanje */
     .custom-gradient-btn:hover {
-        background-position: right center; /* Ovo stvara efekt promjene boje */
+        background-position: right center;
         color: white !important;
     }
 
-    /* Efekt za karticu */
     .card {
         transition: box-shadow 0.3s ease;
     }

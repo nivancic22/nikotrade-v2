@@ -1,1 +1,1 @@
-web: gunicorn nikotrade.wsgi
+web: gunicorn nikotrade_project.wsgi
