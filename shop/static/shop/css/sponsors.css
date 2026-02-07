@@ -1,10 +1,6 @@
-/* =========================================
-   SPONZOR SEKCIJA (DINAMO & SLAVEN)
-   ========================================= */
 
-/* --- Glavni okvir sekcije --- */
 .sponsors-wrapper {
-    background-color: #f9f9f9; /* Svijetlo siva pozadina */
+    background-color: #f9f9f9; 
     padding: 60px 20px;
     width: 100%;
     box-sizing: border-box;
@@ -17,7 +13,6 @@
     text-align: center;
 }
 
-/* --- Naslovi i tekst --- */
 .sponsors-title {
     font-size: 28px;
     font-weight: 700;
@@ -30,59 +25,52 @@
 .sponsors-text {
     font-size: 16px;
     color: #666;
-    margin-bottom: 50px; /* Razmak do logotipa */
+    margin-bottom: 50px; 
 }
 
-/* --- Kontejner za logotipe --- */
 .sponsors-logos {
     display: flex;
     justify-content: center;
-    align-items: center; /* Poravnanje po sredini */
-    gap: 80px; /* Razmak između lijeve i desne strane */
+    align-items: center; 
+    gap: 80px; 
     flex-wrap: wrap;
 }
 
-/* --- Kartica pojedinog kluba --- */
 .sponsor-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 220px; /* Fiksna širina da tekst ne pleše */
+    width: 220px; 
     transition: transform 0.3s ease;
 }
 
 .sponsor-card:hover {
-    transform: translateY(-5px); /* Lagani efekt podizanja */
+    transform: translateY(-5px); 
 }
 
-/* --- LOGO BOX (Ključno za poravnanje teksta) --- */
-/* Ovo je nevidljiva kutija fiksne visine u kojoj stoji slika */
 .logo-box {
-    height: 160px;           /* Visina dovoljna za najveći grb (Slaven) */
+    height: 160px;           
     width: 100%;
-    display: flex;           /* Flex za centriranje slike unutar kutije */
-    align-items: center;     /* Vertikalni centar */
-    justify-content: center; /* Horizontalni centar */
-    margin-bottom: 20px;     /* Razmak između slike i imena kluba */
+    display: flex;           
+    align-items: center;     
+    justify-content: center; 
+    margin-bottom: 20px;     
 }
 
-/* --- Slike (Grbovi) --- */
 .sponsor-img {
-    height: 120px;       /* Osnovna visina (za Dinamo) */
+    height: 120px;       
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    margin-bottom: 0;    /* Margin sada rješava .logo-box */
-    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.05)); /* Blaga sjena */
+    margin-bottom: 0;    
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.05)); 
 }
 
-/* Posebna klasa za Slaven Belupo jer je grb vizualno manji */
 .sponsor-img.slaven-special-size {
     height: 155px; 
 }
 
-/* --- Imena klubova --- */
 .sponsor-name {
     font-weight: 700;
     color: #333;
@@ -90,7 +78,6 @@
     letter-spacing: 0.5px;
 }
 
-/* --- Središnja linija --- */
 .sponsor-line {
     width: 1px;
     height: 180px; 
@@ -99,40 +86,36 @@
     margin-top: 0;
 }
 
-/* =========================================
-   RESPONSIVE (MOBITELI)
-   ========================================= */
+
 @media (max-width: 768px) {
     .sponsors-logos {
         gap: 40px;
-        flex-direction: column; /* Slaže jedno ispod drugog */
+        flex-direction: column; 
     }
 
     .sponsor-line {
-        width: 180px;  /* Linija postaje vodoravna */
+        width: 180px;  
         height: 1px;
         margin: 20px 0;
     }
     
     .sponsor-card {
-        width: 100%; /* Na mobitelu neka uzme punu širinu */
+        width: 100%; 
     }
     
-    /* Na mobitelu možemo malo smanjiti visinu boxa i slika ako želimo,
-       ali ovo će izgledati dobro i ovako. */
 }
-/* --- Stil za tekst o web shopu --- */
+
 .shop-availability {
-    display: block;          /* Da ode u novi red */
-    margin-top: 8px;         /* Mali razmak od imena kluba */
-    font-size: 14px;         /* Malo manji font od imena */
-    color: #0056b3;          /* Boja linka (npr. plava) */
-    text-decoration: none;   /* Bez podcrtavanja (osim na hover) */
+    display: block;          
+    margin-top: 8px;         
+    font-size: 14px;         
+    color: #0056b3;          
+    text-decoration: none;   
     font-weight: 700 !important; 
     transition: color 0.2s;
 }
 
 .shop-availability:hover {
-    color: #003d82;          /* Tamnija plava kad prijeđeš mišem */
+    color: #003d82;          
     text-decoration: underline;
 }

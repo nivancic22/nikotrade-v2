@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404 
 from django.core.mail import send_mail
 from django.contrib import messages
-
+from django.conf import settings 
 
 def index(request):
     return render(request, 'shop/index.html')
@@ -42,15 +42,12 @@ def posalji_upit(request, proizvod_id):
         proizvod = get_object_or_404(Proizvod, id=proizvod_id)
         email_kupca = request.POST.get('email_kupca')
         poruka = request.POST.get('poruka')
-
-        # 1. Spremi u bazu
         Upit.objects.create(
             proizvod=proizvod,
             email_kupca=email_kupca,
             poruka=poruka
         )
 
-        # 2. Pošalji mail tebi
         subject = f"Novi upit za: {proizvod.naziv}"
         full_message = f"Dobili ste novi upit za proizvod {proizvod.naziv}.\n\nEmail kupca: {email_kupca}\nPoruka:\n{poruka}"
         
@@ -58,8 +55,8 @@ def posalji_upit(request, proizvod_id):
             send_mail(
                 subject,
                 full_message,
-                'nikoivancic2801@gmail.com', # Od koga (tvoj settings.EMAIL_HOST_USER)
-                ['nikoivancic2801@gmail.com'], # Kome (tvoj testni mail)
+                settings.EMAIL_HOST_USER, # Od koga (tvoj settings.EMAIL_HOST_USER)
+                [settings.CONTACT_EMAIL], # Kome (tvoj testni mail)
                 fail_silently=False,
             )
             messages.success(request, "Upit je uspješno poslan!")
@@ -79,7 +76,7 @@ def posalji_kontakt_upit(request):
                 naslov=naslov_poruke,
                 poruka=sadrzaj
             )
-            novi_kontakt.save() # Ovdje se fizički upisuje u bazu
+            novi_kontakt.save() 
             
             full_message = f"Dobili ste novi kontakt upit.\n\nOd: {email_posiljatelja}\nNaslov: {naslov_poruke}\n\nPoruka:\n{sadrzaj}"
             
@@ -87,7 +84,7 @@ def posalji_kontakt_upit(request):
                 f"Kontakt upit: {naslov_poruke}",
                 full_message,
                 request.user.email if request.user.is_authenticated else 'web@nikotrade.com',
-                ['nikoivancic2801@gmail.com'], # Tvoj mail
+                [settings.CONTACT_EMAIL], 
                 fail_silently=False,
             )
             messages.success(request, "Vaša poruka je uspješno poslana! Javit ćemo vam se uskoro.")
