@@ -3,25 +3,21 @@ from django.contrib.auth import get_user_model
 import os
 
 class Command(BaseCommand):
-    help = 'Kreira admin usera ako ne postoji'
+    help = 'Kreira admin usera'
 
     def handle(self, *args, **options):
         User = get_user_model()
         
-        admin_username = os.getenv('ADMIN_USERNAME', 'admin')
-        admin_email = os.getenv('ADMIN_EMAIL', 'admin@nikotrade.com')
-        admin_password = os.getenv('ADMIN_PASSWORD')
+        username = os.getenv('ADMIN_USERNAME')
+        email = os.getenv('ADMIN_EMAIL')
+        password = os.getenv('ADMIN_PASSWORD')
         
-        if not admin_password:
-            self.stdout.write(self.style.ERROR('ADMIN_PASSWORD environment varijabla nije postavljena!'))
+        if not password:
+            self.stdout.write('ADMIN_PASSWORD nije postavljen!')
             return
         
-        if not User.objects.filter(username=admin_username).exists():
-            User.objects.create_superuser(
-                username=admin_username,
-                email=admin_email,
-                password=admin_password
-            )
-            self.stdout.write(self.style.SUCCESS(f'Admin user "{admin_username}" kreiran!'))
+        if not User.objects.filter(username=username).exists():
+            User.objects.create_superuser(username, email, password)
+            self.stdout.write(f'✅ Admin "{username}" kreiran!')
         else:
-            self.stdout.write(f'Admin user "{admin_username}" već postoji')
+            self.stdout.write(f'Admin "{username}" već postoji')
