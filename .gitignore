@@ -1,3 +1,4 @@
+staticfiles/
 venv/
 *.pyc
 db.sqlite3
